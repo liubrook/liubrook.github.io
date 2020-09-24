@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1，all：布尔全等判断 1234const all &#x3D; (arr, fn &#x3D; Boolean) &#x3D;&gt; arr.every(fn);all([4, 2, 3], x &#x3D;&gt; x &gt; 1); &#x2F;&#x2F; trueall([1, 2, 3]); &#x2F;&#x2F; true">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript数组工具函数">
+<meta property="og:url" content="https://brookliu.xyz/2019/08/09/Javascript%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="前端笔记">
+<meta property="og:description" content="1，all：布尔全等判断 1234const all &#x3D; (arr, fn &#x3D; Boolean) &#x3D;&gt; arr.every(fn);all([4, 2, 3], x &#x3D;&gt; x &gt; 1); &#x2F;&#x2F; trueall([1, 2, 3]); &#x2F;&#x2F; true">
+<meta property="article:published_time" content="2019-08-09T14:24:06.000Z">
+<meta property="article:modified_time" content="2020-08-16T14:24:54.190Z">
+<meta property="article:author" content="Brookliu">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://brookliu.xyz/2019/08/09/Javascript数组工具函数/"/>
+
+
+
+
+
+  <title>Javascript数组工具函数 | 前端笔记</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">前端笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://brookliu.xyz/2019/08/09/Javascript%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Brookliu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Javascript数组工具函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T22:24:06+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/09/Javascript%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/09/Javascript%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/09/Javascript%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" class="leancloud_visitors" data-flag-title="Javascript数组工具函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1，all：布尔全等判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const all &#x3D; (arr, fn &#x3D; Boolean) &#x3D;&gt; arr.every(fn);</span><br><span class="line"></span><br><span class="line">all([4, 2, 3], x &#x3D;&gt; x &gt; 1); &#x2F;&#x2F; true</span><br><span class="line">all([1, 2, 3]); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+<a id="more"></a>  
+<p>2，allEqual：检查数组各项相等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const allEqual &#x3D; arr &#x3D;&gt; arr.every(val &#x3D;&gt; val &#x3D;&#x3D;&#x3D; arr[0]);</span><br><span class="line"></span><br><span class="line">allEqual([1, 2, 3, 4, 5, 6]); &#x2F;&#x2F; false</span><br><span class="line">allEqual([1, 1, 1, 1]); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+<p>3，approximatelyEqual：约等于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const approximatelyEqual &#x3D; (v1, v2, epsilon &#x3D; 0.001) &#x3D;&gt; Math.abs(v1 - v2) &lt; epsilon;</span><br><span class="line"></span><br><span class="line">approximatelyEqual(Math.PI &#x2F; 2.0, 1.5708); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+<p>4，arrayToCSV：数组转CSV格式（带空格的字符串）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const arrayToCSV &#x3D; (arr, delimiter &#x3D; &#39;,&#39;) &#x3D;&gt;</span><br><span class="line">  arr.map(v &#x3D;&gt; v.map(x &#x3D;&gt; &#96;&quot;$&#123;x&#125;&quot;&#96;).join(delimiter)).join(&#39;\n&#39;);</span><br><span class="line">  </span><br><span class="line">arrayToCSV([[&#39;a&#39;, &#39;b&#39;], [&#39;c&#39;, &#39;d&#39;]]); &#x2F;&#x2F; &#39;&quot;a&quot;,&quot;b&quot;\n&quot;c&quot;,&quot;d&quot;&#39;</span><br><span class="line">arrayToCSV([[&#39;a&#39;, &#39;b&#39;], [&#39;c&#39;, &#39;d&#39;]], &#39;;&#39;); &#x2F;&#x2F; &#39;&quot;a&quot;;&quot;b&quot;\n&quot;c&quot;;&quot;d&quot;&#39;</span><br></pre></td></tr></table></figure>
+<p>5，arrayToHtmlList：数组转li列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">此代码段将数组的元素转换为&lt;li&gt;标签，并将其附加到给定ID的列表中。</span><br><span class="line">const arrayToHtmlList &#x3D; (arr, listID) &#x3D;&gt;</span><br><span class="line">  (el &#x3D;&gt; (</span><br><span class="line">    (el &#x3D; document.querySelector(&#39;#&#39; + listID)),</span><br><span class="line">    (el.innerHTML +&#x3D; arr.map(item &#x3D;&gt; &#96;&lt;li&gt;$&#123;item&#125;&lt;&#x2F;li&gt;&#96;).join(&#39;&#39;))</span><br><span class="line">  ))();</span><br><span class="line">  </span><br><span class="line">arrayToHtmlList([&#39;item 1&#39;, &#39;item 2&#39;], &#39;myListID&#39;);</span><br></pre></td></tr></table></figure>
+<p>6，average：平均数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const average &#x3D; (...nums) &#x3D;&gt; nums.reduce((acc, val) &#x3D;&gt; acc + val, 0) &#x2F; nums.length;</span><br><span class="line">average(...[1, 2, 3]); &#x2F;&#x2F; 2</span><br><span class="line">average(1, 2, 3); &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
+<p>7，averageBy：数组对象属性平均数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const averageBy &#x3D; (arr, fn) &#x3D;&gt;</span><br><span class="line">  arr.map(typeof fn &#x3D;&#x3D;&#x3D; &#39;function&#39; ? fn : val &#x3D;&gt; val[fn]).reduce((acc, val) &#x3D;&gt; acc + val, 0) &#x2F;</span><br><span class="line">  arr.length;</span><br><span class="line">  </span><br><span class="line">averageBy([&#123; n: 4 &#125;, &#123; n: 2 &#125;, &#123; n: 8 &#125;, &#123; n: 6 &#125;], o &#x3D;&gt; o.n); &#x2F;&#x2F; 5</span><br><span class="line">averageBy([&#123; n: 4 &#125;, &#123; n: 2 &#125;, &#123; n: 8 &#125;, &#123; n: 6 &#125;], &#39;n&#39;); &#x2F;&#x2F; 5</span><br></pre></td></tr></table></figure>
+<p>8，bifurcate：拆分断言后的数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">可以根据每个元素返回的值，使用reduce()和push() 将元素添加到第二次参数fn中 。</span><br><span class="line">const bifurcate &#x3D; (arr, filter) &#x3D;&gt;</span><br><span class="line">  arr.reduce((acc, val, i) &#x3D;&gt; (acc[filter[i] ? 0 : 1].push(val), acc), [[], []]);</span><br><span class="line">bifurcate([&#39;beep&#39;, &#39;boop&#39;, &#39;foo&#39;, &#39;bar&#39;], [true, true, false, true]); </span><br><span class="line">&#x2F;&#x2F; [ [&#39;beep&#39;, &#39;boop&#39;, &#39;bar&#39;], [&#39;foo&#39;] ]</span><br></pre></td></tr></table></figure>
+<p>9，castArray：其它类型转数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const castArray &#x3D; val &#x3D;&gt; (Array.isArray(val) ? val : [val]);</span><br><span class="line"></span><br><span class="line">castArray(&#39;foo&#39;); &#x2F;&#x2F; [&#39;foo&#39;]</span><br><span class="line">castArray([1]); &#x2F;&#x2F; [1]</span><br><span class="line">castArray(1); &#x2F;&#x2F; [1]</span><br></pre></td></tr></table></figure>
+<p>10，compact：去除数组中的无效/无用值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const compact &#x3D; arr &#x3D;&gt; arr.filter(Boolean);</span><br><span class="line"></span><br><span class="line">compact([0, 1, false, 2, &#39;&#39;, 3, &#39;a&#39;, &#39;e&#39; * 23, NaN, &#39;s&#39;, 34]); </span><br><span class="line">&#x2F;&#x2F; [ 1, 2, 3, &#39;a&#39;, &#39;s&#39;, 34 ]</span><br></pre></td></tr></table></figure>
+<p>11，countOccurrences：检测数值出现次数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const countOccurrences &#x3D; (arr, val) &#x3D;&gt; arr.reduce((a, v) &#x3D;&gt; (v &#x3D;&#x3D;&#x3D; val ? a + 1 : a), 0);</span><br><span class="line">countOccurrences([1, 1, 2, 1, 2, 3], 1); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+<p>12，deepFlatten：递归扁平化数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const deepFlatten &#x3D; arr &#x3D;&gt; [].concat(...arr.map(v &#x3D;&gt; (Array.isArray(v) ? deepFlatten(v) : v)));</span><br><span class="line"></span><br><span class="line">deepFlatten([1, [2], [[3], 4], 5]); &#x2F;&#x2F; [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<p>13，difference：寻找差异<br>此代码段查找两个数组之间的差异。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const difference &#x3D; (a, b) &#x3D;&gt; &#123;</span><br><span class="line">  const s &#x3D; new Set(b);</span><br><span class="line">  return a.filter(x &#x3D;&gt; !s.has(x));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">difference([1, 2, 3], [1, 2, 4]); &#x2F;&#x2F; [3]</span><br></pre></td></tr></table></figure>
+<p>14，differenceBy：先执行再寻找差异<br>在将给定函数应用于两个列表的每个元素之后，此方法返回两个数组之间的差异。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const differenceBy &#x3D; (a, b, fn) &#x3D;&gt; &#123;</span><br><span class="line">  const s &#x3D; new Set(b.map(fn));</span><br><span class="line">  return a.filter(x &#x3D;&gt; !s.has(fn(x)));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); &#x2F;&#x2F; [1.2]</span><br><span class="line">differenceBy([&#123; x: 2 &#125;, &#123; x: 1 &#125;], [&#123; x: 1 &#125;], v &#x3D;&gt; v.x); &#x2F;&#x2F; [ &#123; x: 2 &#125; ]</span><br></pre></td></tr></table></figure>
+<p>15，dropWhile：删除不符合条件的值<br>此代码段从数组顶部开始删除元素，直到传递的函数返回为true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const dropWhile &#x3D; (arr, func) &#x3D;&gt; &#123;</span><br><span class="line">  while (arr.length &gt; 0 &amp;&amp; !func(arr[0])) arr &#x3D; arr.slice(1);</span><br><span class="line">  return arr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">dropWhile([1, 2, 3, 4], n &#x3D;&gt; n &gt;&#x3D; 3); &#x2F;&#x2F; [3,4]</span><br></pre></td></tr></table></figure>
+<p>16，flatten：指定深度扁平化数组<br>此代码段第二参数可指定深度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const flatten &#x3D; (arr, depth &#x3D; 1) &#x3D;&gt;</span><br><span class="line">  arr.reduce((a, v) &#x3D;&gt; a.concat(depth &gt; 1 &amp;&amp; Array.isArray(v) ? flatten(v, depth - 1) : v), []);</span><br><span class="line"></span><br><span class="line">flatten([1, [2], 3, 4]); &#x2F;&#x2F; [1, 2, 3, 4]</span><br><span class="line">flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); &#x2F;&#x2F; [1, 2, 3, [4, 5], 6, 7, 8]</span><br></pre></td></tr></table></figure>
+<p>17，indexOfAll：返回数组中某值的所有索引<br>此代码段可用于获取数组中某个值的所有索引，如果此值中未包含该值，则返回一个空数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const indexOfAll &#x3D; (arr, val) &#x3D;&gt; arr.reduce((acc, el, i) &#x3D;&gt; (el &#x3D;&#x3D;&#x3D; val ? [...acc, i] : acc), []);</span><br><span class="line"></span><br><span class="line">indexOfAll([1, 2, 3, 1, 2, 3], 1); &#x2F;&#x2F; [0,3]</span><br><span class="line">indexOfAll([1, 2, 3], 4); &#x2F;&#x2F; []</span><br></pre></td></tr></table></figure>
+<p>18，intersection：两数组的交集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const intersection &#x3D; (a, b) &#x3D;&gt; &#123;</span><br><span class="line">  const s &#x3D; new Set(b);</span><br><span class="line">  return a.filter(x &#x3D;&gt; s.has(x));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">intersection([1, 2, 3], [4, 3, 2]); &#x2F;&#x2F; [2, 3]</span><br></pre></td></tr></table></figure>
+<p>19，intersectionWith：两数组都符合条件的交集<br>此片段可用于在对两个数组的每个元素执行了函数之后，返回两个数组中存在的元素列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const intersectionBy &#x3D; (a, b, fn) &#x3D;&gt; &#123;</span><br><span class="line">  const s &#x3D; new Set(b.map(fn));</span><br><span class="line">  return a.filter(x &#x3D;&gt; s.has(fn(x)));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor); &#x2F;&#x2F; [2.1]</span><br></pre></td></tr></table></figure>
+<p>20，intersectionWith：先比较后返回交集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const intersectionWith &#x3D; (a, b, comp) &#x3D;&gt; a.filter(x &#x3D;&gt; b.findIndex(y &#x3D;&gt; comp(x, y)) !&#x3D;&#x3D; -1);</span><br><span class="line"></span><br><span class="line">intersectionWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0, 3.9], (a, b) &#x3D;&gt; Math.round(a) &#x3D;&#x3D;&#x3D; Math.round(b)); &#x2F;&#x2F; [1.5, 3, 0]</span><br></pre></td></tr></table></figure>
+<p>21，minN：返回指定长度的升序数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const minN &#x3D; (arr, n &#x3D; 1) &#x3D;&gt; [...arr].sort((a, b) &#x3D;&gt; a - b).slice(0, n);</span><br><span class="line"></span><br><span class="line">minN([1, 2, 3]); &#x2F;&#x2F; [1]</span><br><span class="line">minN([1, 2, 3], 2); &#x2F;&#x2F; [1,2]</span><br></pre></td></tr></table></figure>
+<p>22，negate：根据条件反向筛选</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const negate &#x3D; func &#x3D;&gt; (...args) &#x3D;&gt; !func(...args);</span><br><span class="line"></span><br><span class="line">[1, 2, 3, 4, 5, 6].filter(negate(n &#x3D;&gt; n % 2 &#x3D;&#x3D;&#x3D; 0)); &#x2F;&#x2F; [ 1, 3, 5 ]</span><br></pre></td></tr></table></figure>
+<p>23，randomIntArrayInRange：生成两数之间指定长度的随机数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const randomIntArrayInRange &#x3D; (min, max, n &#x3D; 1) &#x3D;&gt;</span><br><span class="line">  Array.from(&#123; length: n &#125;, () &#x3D;&gt; Math.floor(Math.random() * (max - min + 1)) + min);</span><br><span class="line">  </span><br><span class="line">randomIntArrayInRange(12, 35, 10); &#x2F;&#x2F; [ 34, 14, 27, 17, 30, 27, 20, 26, 21, 14 ]</span><br></pre></td></tr></table></figure>
+<p>24，sample：在指定数组中获取随机数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const sample &#x3D; arr &#x3D;&gt; arr[Math.floor(Math.random() * arr.length)];</span><br><span class="line"></span><br><span class="line">sample([3, 7, 9, 11]); &#x2F;&#x2F; 9</span><br></pre></td></tr></table></figure>
+<p>25，sampleSize：在指定数组中获取指定长度的随机数<br>此代码段可用于从数组中获取指定长度的随机数，直至穷尽数组。 使用Fisher-Yates算法对数组中的元素进行随机选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const sampleSize &#x3D; ([...arr], n &#x3D; 1) &#x3D;&gt; &#123;</span><br><span class="line">  let m &#x3D; arr.length;</span><br><span class="line">  while (m) &#123;</span><br><span class="line">    const i &#x3D; Math.floor(Math.random() * m--);</span><br><span class="line">    [arr[m], arr[i]] &#x3D; [arr[i], arr[m]];</span><br><span class="line">  &#125;</span><br><span class="line">  return arr.slice(0, n);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">sampleSize([1, 2, 3], 2); &#x2F;&#x2F; [3,1]</span><br><span class="line">sampleSize([1, 2, 3], 4); &#x2F;&#x2F; [2,3,1]</span><br></pre></td></tr></table></figure>
+<p>26，shuffle：“洗牌” 数组<br>此代码段使用Fisher-Yates算法随机排序数组的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const shuffle &#x3D; ([...arr]) &#x3D;&gt; &#123;</span><br><span class="line">  let m &#x3D; arr.length;</span><br><span class="line">  while (m) &#123;</span><br><span class="line">    const i &#x3D; Math.floor(Math.random() * m--);</span><br><span class="line">    [arr[m], arr[i]] &#x3D; [arr[i], arr[m]];</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const foo &#x3D; [1, 2, 3];</span><br><span class="line">shuffle(foo); &#x2F;&#x2F; [2, 3, 1], foo &#x3D; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<p>27，nest：根据parent_id生成树结构（阿里一面真题）<br>根据每项的parent_id，生成具体树形结构的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const nest &#x3D; (items, id &#x3D; null, link &#x3D; &#39;parent_id&#39;) &#x3D;&gt;</span><br><span class="line">  items</span><br><span class="line">    .filter(item &#x3D;&gt; item[link] &#x3D;&#x3D;&#x3D; id)</span><br><span class="line">    .map(item &#x3D;&gt; (&#123; ...item, children: nest(items, item.id) &#125;));</span><br></pre></td></tr></table></figure>
+<p>用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const comments &#x3D; [</span><br><span class="line">  &#123; id: 1, parent_id: null &#125;,</span><br><span class="line">  &#123; id: 2, parent_id: 1 &#125;,</span><br><span class="line">  &#123; id: 3, parent_id: 1 &#125;,</span><br><span class="line">  &#123; id: 4, parent_id: 2 &#125;,</span><br><span class="line">  &#123; id: 5, parent_id: 4 &#125;</span><br><span class="line">];</span><br><span class="line">const nestedComments &#x3D; nest(comments); &#x2F;&#x2F; [&#123; id: 1, parent_id: null, children: [...] &#125;]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/05/%E9%98%BF%E6%8B%89%E4%BC%AF%E6%95%B0%E5%AD%97%E8%BD%AC%E4%B8%AD%E6%96%87/" rel="next" title="阿拉伯数字转中文">
+                <i class="fa fa-chevron-left"></i> 阿拉伯数字转中文
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/12/CSS%E4%B8%80%E4%BA%9B%E6%98%93%E5%BF%98%E7%9A%84%E5%B8%B8%E7%94%A8%E7%82%B9/" rel="prev" title="CSS一些易忘的常用点">
+                CSS一些易忘的常用点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Brookliu" />
+            
+              <p class="site-author-name" itemprop="name">Brookliu</p>
+              <p class="site-description motion-element" itemprop="description">前端码农的日常学习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/liubrook" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/588993964030574" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-globe"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Brookliu</span>
+
+  
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=500725813";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'wdEmjy5T77AkIgiwj3VfoTD0-gzGzoHsz',
+        appKey: 'Q0n1AFSDoyYQsw7RI9eC1rfP',
+        placeholder: '(。・∀・)ノ )',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("wdEmjy5T77AkIgiwj3VfoTD0-gzGzoHsz", "Q0n1AFSDoyYQsw7RI9eC1rfP");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
