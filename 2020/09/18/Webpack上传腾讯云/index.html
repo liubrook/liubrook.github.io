@@ -89,7 +89,7 @@
 <meta name="description" content="介绍我们公司之前的项目一直都是打包之后上传七牛，但是最近一段时间总是出现打包文件找不到的情况，中间过程就省略了，最后决定把项目文件放到腾讯云上。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Webpack上传腾讯云">
-<meta property="og:url" content="https://brookliu.xyz/2020/09/18/Webpack%E4%B8%8A%E4%BC%A0%E8%85%BE%E8%AE%AF%E4%BA%91/index.html">
+<meta property="og:url" content="https://github.com/liubrook/liubrook.github.io/2020/09/18/Webpack%E4%B8%8A%E4%BC%A0%E8%85%BE%E8%AE%AF%E4%BA%91/index.html">
 <meta property="og:site_name" content="前端笔记">
 <meta property="og:description" content="介绍我们公司之前的项目一直都是打包之后上传七牛，但是最近一段时间总是出现打包文件找不到的情况，中间过程就省略了，最后决定把项目文件放到腾讯云上。">
 <meta property="article:published_time" content="2020-09-18T09:08:16.000Z">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://brookliu.xyz/2020/09/18/Webpack上传腾讯云/"/>
+  <link rel="canonical" href="https://github.com/liubrook/liubrook.github.io/2020/09/18/Webpack上传腾讯云/"/>
 
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://brookliu.xyz/2020/09/18/Webpack%E4%B8%8A%E4%BC%A0%E8%85%BE%E8%AE%AF%E4%BA%91/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/liubrook/liubrook.github.io/2020/09/18/Webpack%E4%B8%8A%E4%BC%A0%E8%85%BE%E8%AE%AF%E4%BA%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Brookliu">
@@ -449,7 +449,7 @@
 <p><strong><em>注: Webpack 的 <code>output.publicPath</code> 要指向 COS（或自定义的）域名地址</em></strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">const</span> CosPlugin = <span class="built_in">require</span>(<span class="string">'cos-webpack'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里用项目名加上时间戳用来在腾讯云中区分标识</span></span><br><span class="line"><span class="keyword">const</span> fileName = <span class="string">'projectName/'</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 Plugin</span></span><br><span class="line"><span class="keyword">const</span> cosPlugin = <span class="keyword">new</span> CosPlugin(&#123;</span><br><span class="line">    secretId: defaultSettings.tencent.secretId,</span><br><span class="line">    secretKey: defaultSettings.tencent.secretKey,</span><br><span class="line">    bucket: defaultSettings.tencent.bucket,</span><br><span class="line">    region: defaultSettings.tencent.region,</span><br><span class="line">    path: fileName</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Webpack 的配置</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> output: &#123;</span><br><span class="line">    publicPath: IS_PROD ? defaultSettings.tencent.publicPath + fileName + <span class="string">'/dist'</span> : <span class="string">'/'</span>,</span><br><span class="line">    outputDir: <span class="string">'dist'</span>,</span><br><span class="line">    assetsDir: <span class="string">'static'</span>,</span><br><span class="line"> &#125;,</span><br><span class="line"> plugins: [</span><br><span class="line">   cosPlugin</span><br><span class="line">   <span class="comment">// ...</span></span><br><span class="line"> ]</span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><a href="https://github.com/liubrook/tencent-cloud-webpack" target="_blank" rel="noopener">示例项目</a></p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><a href="https://github.com/liubrook/tencent-cloud-webpack">示例项目</a></p>
 
       
     </div>
@@ -489,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/07/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B01/" rel="prev" title="Docker简单上手01">
+                Docker简单上手01 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +587,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -594,7 +598,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
