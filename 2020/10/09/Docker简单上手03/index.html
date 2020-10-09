@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="面试题," />
+  <meta name="keywords" content="Docker," />
 
 
 
@@ -88,17 +88,22 @@
 
 
 
-<meta name="description" content="1，http的状态码中，499是什么？如何出现499？如何排查解决？499对应的是“client has closed connection”，客户端请求等待连接已经关闭，这很有可能是因为服务器端处理的时间过长，客户端等的‘不耐烦了’。还可能是因为两次提交post请求过快就会出现499。解决方法:  前端将timeout最大等待时间设置大一些。 nginx上配置proxt_ignore_clien">
+<meta name="description" content="前言在Docker简单上手01中我们一起学习了Docker的容器化。 在Docker简单上手02中我们一起学习了不同容器通过Docker网络实现相互之间的通信。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端常见面试题-1">
-<meta property="og:url" content="https://github.com/liubrook/liubrook.github.io/2020/01/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-1/index.html">
+<meta property="og:title" content="Docker简单上手03">
+<meta property="og:url" content="https://github.com/liubrook/liubrook.github.io/2020/10/09/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B03/index.html">
 <meta property="og:site_name" content="前端笔记">
-<meta property="og:description" content="1，http的状态码中，499是什么？如何出现499？如何排查解决？499对应的是“client has closed connection”，客户端请求等待连接已经关闭，这很有可能是因为服务器端处理的时间过长，客户端等的‘不耐烦了’。还可能是因为两次提交post请求过快就会出现499。解决方法:  前端将timeout最大等待时间设置大一些。 nginx上配置proxt_ignore_clien">
-<meta property="article:published_time" content="2020-01-02T02:47:48.000Z">
-<meta property="article:modified_time" content="2020-09-24T02:51:58.745Z">
+<meta property="og:description" content="前言在Docker简单上手01中我们一起学习了Docker的容器化。 在Docker简单上手02中我们一起学习了不同容器通过Docker网络实现相互之间的通信。">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-3-1.png">
+<meta property="og:image" content="https://static.tuture.co/c/442cc8d/170b032e4bd0e059.png">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-3-2.png">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-3-3.png">
+<meta property="article:published_time" content="2020-10-09T02:58:00.000Z">
+<meta property="article:modified_time" content="2020-10-09T06:33:17.788Z">
 <meta property="article:author" content="Brookliu">
-<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.brookliu.xyz/blog/docker-3-1.png">
 
 
 
@@ -128,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/liubrook/liubrook.github.io/2020/01/02/前端常见面试题-1/"/>
+  <link rel="canonical" href="https://github.com/liubrook/liubrook.github.io/2020/10/09/Docker简单上手03/"/>
 
 
 
 
 
-  <title>前端常见面试题-1 | 前端笔记</title>
+  <title>Docker简单上手03 | 前端笔记</title>
   
 
 
@@ -305,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/liubrook/liubrook.github.io/2020/01/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-1/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/liubrook/liubrook.github.io/2020/10/09/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Brookliu">
@@ -322,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端常见面试题-1</h1>
+          <h1 class="post-title" itemprop="name headline">Docker简单上手03</h1>
         
 
         <div class="post-meta">
@@ -334,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T10:47:48+08:00">
-                2020-01-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-09T10:58:00+08:00">
+                2020-10-09
               </time>
             
 
@@ -357,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">面试题</span>
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
                   </a>
                 </span>
 
@@ -375,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/01/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-1/" itemprop="commentCount"></span>
+                <a href="/2020/10/09/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/10/09/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B03/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,7 +389,7 @@
 
           
           
-             <span id="/2020/01/02/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-1/" class="leancloud_visitors" data-flag-title="前端常见面试题-1">
+             <span id="/2020/10/09/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B03/" class="leancloud_visitors" data-flag-title="Docker简单上手03">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -414,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  2.9k
                 </span>
               
 
@@ -430,7 +435,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  11
                 </span>
               
             </div>
@@ -451,32 +456,144 @@
       
 
       
-        <h3 id="1，http的状态码中，499是什么？如何出现499？如何排查解决？"><a href="#1，http的状态码中，499是什么？如何出现499？如何排查解决？" class="headerlink" title="1，http的状态码中，499是什么？如何出现499？如何排查解决？"></a>1，http的状态码中，499是什么？如何出现499？如何排查解决？</h3><p>499对应的是“client has closed connection”，客户端请求等待连接已经关闭，这很有可能是因为服务器端处理的时间过长，客户端等的‘不耐烦了’。还可能是因为两次提交post请求过快就会出现499。<br>解决方法:</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在<a href="https://brookliu.xyz/2020/10/07/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B01/#more" target="_blank" rel="noopener">Docker简单上手01</a>中我们一起学习了Docker的容器化。</p>
+<p>在<a href="https://brookliu.xyz/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/" target="_blank" rel="noopener">Docker简单上手02</a>中我们一起学习了不同容器通过Docker网络实现相互之间的通信。</p>
+<a id="more"></a> 
+<h3 id="Docker数据管理"><a href="#Docker数据管理" class="headerlink" title="Docker数据管理"></a>Docker数据管理</h3><p>今天我们一起学习上手Docker数据管理。Docker数据的管理方式主要分为三种：</p>
 <ul>
-<li>前端将timeout最大等待时间设置大一些。</li>
-<li>nginx上配置proxt_ignore_client_abort on;<a id="more"></a>  
-<h3 id="2，如何遍历一个dom树"><a href="#2，如何遍历一个dom树" class="headerlink" title="2，如何遍历一个dom树"></a>2，如何遍历一个dom树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function traversal(node) &#123;</span><br><span class="line">    &#x2F;&#x2F; 对node的处理</span><br><span class="line">    if (node &amp;&amp; node.nodeType &#x3D;&#x3D;&#x3D; 1) &#123;</span><br><span class="line">        console.log(node.tagName);</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i &#x3D; 0; i &lt; node.childNodes.length; i++) &#123;</span><br><span class="line">        const item &#x3D; node.childNodes[i];</span><br><span class="line">        if (item.nodeType &#x3D;&#x3D;&#x3D; 1) &#123;</span><br><span class="line">            &#x2F;&#x2F; 递归先序遍历子节点</span><br><span class="line">            traversal(item)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>数据卷(Volume)，也是最为推荐的一种方式。</li>
+<li>绑定挂载(Bind Mount)，Docker早期常用的数据管理方式。</li>
+<li>tmpfs挂载。基于内存的数据管理。</li>
+</ul>
+<div class="note info"><p>注意</p><a href="https://docs.docker.com/storage/tmpfs/" target="_blank" rel="noopener">tmpfs挂载</a>只适用于Linux操作系统。</div>
+
+<h4 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h4><h5 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h5><p>数据卷（Volume）也是常见的 Docker 对象类型的一种，因此也支持 create（创建）、inspect （查看详情）、ls （列出所有数据卷）、prune （删除无用数据卷）和 rm（删除）等操作。<br>首先创建一个数据卷：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume create my-volume</span><br></pre></td></tr></table></figure>
+
+<p>查看当前所有的数据卷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume ls</span><br></pre></td></tr></table></figure>
+
+<p>可以看到输出的信息最后一条</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local               my-volume</span><br></pre></td></tr></table></figure>
+
+<p>然后我们输入命令查看my-volume数据卷的详细情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume inspect my-volume</span><br></pre></td></tr></table></figure>
+<p>可以看到输出了下面的信息：<br><img src="https://img.brookliu.xyz/blog/docker-3-1.png" alt="my-volume信息"></p>
+<p>最后我们删除刚才创建的my-volume数据卷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume rm my-volume</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://static.tuture.co/c/442cc8d/170b032e4bd0e059.png" alt="数据卷"><br>从上图我们可以看到，数据卷在 “主机环境” 和 “容器环境” 之间架起了 “一道桥梁”。通常，我们在容器中将需要存储的数据写入数据卷所挂载的路径（位置），然后就会立即、自动地将这些数据存储到主机对应的区域。</p>
+<h5 id="创建数据卷的方式"><a href="#创建数据卷的方式" class="headerlink" title="创建数据卷的方式"></a>创建数据卷的方式</h5><p>在创建带有数据卷的容器时，通常有两种选择：1）命名卷（Named Volume）；2）匿名卷（Anonymous Volume）。接下来我们就分别详细讲解。</p>
+<h6 id="创建命名卷"><a href="#创建命名卷" class="headerlink" title="创建命名卷"></a>创建命名卷</h6><p>运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rum -it -v my:vol:&#x2F;data --name container1 alpine</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，我们通过 -v （或者 –volume ）参数指定了数据卷的配置为 my-vol:/data ，其中（你应该猜到了）my-vol 就是数据卷的名称，/data 就是容器中数据卷的路径。</p>
+<p>在进入容器后，向/data目录中添加一个文件后退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;data&#x2F;file.txt</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p>为了验证 /data 中的数据是否真的保存下来，我们删除 container1 容器，然后再创建一个新的容器 container2 ，查看其中的 /data 目录内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker rm container1</span><br><span class="line"></span><br><span class="line">docker run -it -v my-vol:&#x2F;data --name container2 alpine</span><br><span class="line"></span><br><span class="line">ls &#x2F;data</span><br><span class="line">&#x2F;&#x2F; 这里可以看到会输出</span><br><span class="line">file.txt</span><br><span class="line"></span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>可以看到刚刚在 container1 中创建的 file.txt 文件！事实上，这种在容器之间共享数据卷的模式非常常见，Docker 提供了一个方便的参数 –volumes-from 来轻松实现数据卷共享：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v --volumes-from container2 --name container3 alpine</span><br><span class="line"></span><br><span class="line">ls &#x2F;data</span><br><span class="line">file.txt</span><br></pre></td></tr></table></figure>
+<p>同样，container3 中也能访问到数据卷中的内容。</p>
+<h6 id="创建匿名卷"><a href="#创建匿名卷" class="headerlink" title="创建匿名卷"></a>创建匿名卷</h6><p>创建匿名卷的方式就很简单了，之前我们通过 my-vol:/data 作为 -v 的参数，而创建匿名卷只需省略数据卷名称（my-vol 即可）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v &#x2F;data --name container4 alpine</span><br></pre></td></tr></table></figure>
+
+<p>输入以下命令查看container4的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect container4</span><br></pre></td></tr></table></figure>
+<p><img src="https://img.brookliu.xyz/blog/docker-3-2.png" alt="container4"></p>
+<p>看一下Mount中的一些重要字段：</p>
+<ul>
+<li>Name 即数据卷的名称，由于是匿名卷，所以 Name 字段就是一串长长的随机数，命名卷则为指定的名称。</li>
+<li>Source 为数据卷在主机文件系统中的存储路径（之前说了，Windows 和 Mac 在 Docker 虚拟机中）。</li>
+<li>Destination 为数据卷在容器中的挂载点。</li>
+<li>RW 指可读写（Read-Write），如果为 false ，则为只读数据卷。</li>
+</ul>
+<h5 id="在-Dockerfile-中使用数据卷"><a href="#在-Dockerfile-中使用数据卷" class="headerlink" title="在 Dockerfile 中使用数据卷"></a>在 Dockerfile 中使用数据卷</h5><p>在 Dockerfile 中使用数据卷非常简单，只需通过 VOLUME 关键词指定数据卷就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VOLUME &#x2F;data</span><br><span class="line"></span><br><span class="line"># 或者通过 JSON 数组的方式指定多个数据卷</span><br><span class="line">VOLUME [&quot;&#x2F;data1&quot;, &quot;&#x2F;data2&quot;, &quot;&#x2F;data3&quot;]</span><br></pre></td></tr></table></figure>
+
+<div class="note warning"><p>注意</p><p>只能创建匿名卷</p><p>当通过docker run -v指定数据卷时，Dockerfile中的配置会被覆盖</p></div>
+
+<h4 id="绑定挂载"><a href="#绑定挂载" class="headerlink" title="绑定挂载"></a>绑定挂载</h4><p>绑定挂载（Bind Mount）是出现最早的 Docker 数据管理和存储解决方案，它的大致思路和数据卷是一致的，只不过是直接建立本机文件系统和容器文件系统之间的映射关系，非常适合简单、灵活地在本机和容器之间传递数据。</p>
+<p>我们可以试着把自己机器的桌面（或者其他路径）挂载到容器中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v ~&#x2F;Desktop:&#x2F;desktop alpine</span><br></pre></td></tr></table></figure>
+
+<p>我们还是通过 -v 参数来进行配置，<del>/Desktop 是本机文件系统路径，/desktop 则是容器中的路径，</del>/Desktop:/desktop 则是将本机路径和容器路径进行绑定，仿佛架起了一道桥梁。这里的 –rm 选项是指在容器停止之后自动删除。</p>
+<p>进入到容器之后，可以试试看 /desktop 下面有没有自己桌面上的东西，然后再在容器中创建一个文件，看看桌面上有没有收到这个文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;# ls &#x2F;desktop</span><br><span class="line"></span><br><span class="line">&#x2F;# touch &#x2F;desktop&#x2F;from-container.txt</span><br></pre></td></tr></table></figure>
+<p>你应该能看到自己的桌面上多了容器中创建的 from-container.txt 文件！</p>
+<h3 id="动手实战"><a href="#动手实战" class="headerlink" title="动手实战"></a>动手实战</h3><p>上面我们熟悉了Docker数据管理的两种方式，说不如练，下面我们直接动手演示。</p>
+<h4 id="项目准备"><a href="#项目准备" class="headerlink" title="项目准备"></a>项目准备</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone -b volume-start https:&#x2F;&#x2F;github.com&#x2F;tuture-dev&#x2F;docker-dream.git</span><br><span class="line">cd docker-dream</span><br></pre></td></tr></table></figure>
+
+<p>实战内容：</p>
+<ul>
+<li>存储和备份 Express 服务器输出的日志数据，而不是存储在” 朝生暮死 “的容器中。</li>
+<li>MongoDB 镜像已经做了数据卷配置，所以我们只需实践一波怎么备份和恢复数据。</li>
+</ul>
+<h4 id="为-Express-服务器挂载数据卷"><a href="#为-Express-服务器挂载数据卷" class="headerlink" title="为 Express 服务器挂载数据卷"></a>为 Express 服务器挂载数据卷</h4><p>我们首先在 server/Dockerfile 中添加 VOLUME 配置，并且指定 LOG_PATH （日志输出路径环境变量，可参考 server/index.js 的源码）为 /var/log/server/access.log，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">FROM node:10</span><br><span class="line"></span><br><span class="line"># 指定工作目录为 &#x2F;usr&#x2F;src&#x2F;app，接下来的命令全部在这个目录下操作</span><br><span class="line">WORKDIR &#x2F;usr&#x2F;src&#x2F;app</span><br><span class="line"></span><br><span class="line">VOLUME &#x2F;var&#x2F;log&#x2F;server</span><br><span class="line"></span><br><span class="line"># 将 package.json 拷贝到工作目录</span><br><span class="line">COPY package.json .</span><br><span class="line"></span><br><span class="line"># 安装 npm 依赖</span><br><span class="line">RUN npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org &amp;&amp; npm install</span><br><span class="line"></span><br><span class="line"># 拷贝源代码</span><br><span class="line">COPY . .</span><br><span class="line"></span><br><span class="line"># 设置环境变量（服务器的主机 IP 和端口）</span><br><span class="line">ENV MONGO_URI&#x3D;mongodb:&#x2F;&#x2F;dream-db:27017&#x2F;todos</span><br><span class="line">ENV HOST&#x3D;0.0.0.0</span><br><span class="line">ENV PORT&#x3D;4000</span><br><span class="line">ENV LOG_PATH&#x3D;&#x2F;var&#x2F;log&#x2F;server&#x2F;access.log</span><br><span class="line"></span><br><span class="line"># 开放 4000 端口</span><br><span class="line">EXPOSE 4000</span><br><span class="line"></span><br><span class="line"># 设置镜像运行命令</span><br><span class="line">CMD [ &quot;node&quot;, &quot;index.js&quot; ]</span><br></pre></td></tr></table></figure>
+
+<p>然后 build 服务器镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t dream-server server&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>现在我们把整个项目走起来，也就是进来前两篇文章的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 创建网络，便于容器互联</span><br><span class="line">docker network create dream-net</span><br><span class="line"></span><br><span class="line"># 启动 MongoDB 容器（dream-db）</span><br><span class="line">docker run --name dream-db --network dream-net -d mongo</span><br><span class="line"></span><br><span class="line"># 启动 Express API 容器（dream-api）</span><br><span class="line">docker run -p 4000:4000 --name dream-api --network dream-net -d dream-server</span><br><span class="line"></span><br><span class="line"># 构建提供 React 前端页面的 Nginx 服务器</span><br><span class="line">docker build -t dream-client client</span><br><span class="line"></span><br><span class="line"># 启动 Nginx 服务器容器（client）</span><br><span class="line">docker run -p 8080:80 --name client -d dream-client</span><br></pre></td></tr></table></figure>
+
+<p>项目起来之后我们<code>docker ps</code>确保三个容器都已经开启:<br><img src="https://img.brookliu.xyz/blog/docker-3-3.png" alt="容器开启"></p>
+<p>然后访问localhost:8080(服务器域名:8080)</p>
+<h4 id="日志数据的备份"><a href="#日志数据的备份" class="headerlink" title="日志数据的备份"></a>日志数据的备份</h4><p>创建一个新的临时容器，通过共享数据卷的方式来备份数据。</p>
+<ul>
+<li><p>实现 dream-api 容器和数据卷之间的数据共享（已实现）。</p>
+</li>
+<li><p>创建临时容器，获取 dream-api 的数据卷。运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --volumes-from dream-api -v $(pwd):&#x2F;backup alpine</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p>上面这句命令同时用到了上面讲解的数据卷和绑定挂载：</p><p>--volumes-from dream-api 用于容器之间共享数据卷，这里我们获取 dream-api 的数据卷</p><p>-v $(pwd):/backup 用于建立当前本机文件路径（pwd 命令获取）和临时容器内 /backup 路径的绑定挂载</p></div>
+
+<ul>
+<li>进入临时容器之后，我们把日志数据压缩成 tar 包放到 /backup 目录下，然后退出：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; # tar cvf &#x2F;backup&#x2F;backup.tar &#x2F;var&#x2F;log&#x2F;server&#x2F;</span><br><span class="line">tar: removing leading &#39;&#x2F;&#39; from member names</span><br><span class="line">var&#x2F;log&#x2F;server&#x2F;</span><br><span class="line">var&#x2F;log&#x2F;server&#x2F;access.log</span><br><span class="line">&#x2F; # exit</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h3 id="3，new操作符都做了什么？"><a href="#3，new操作符都做了什么？" class="headerlink" title="3，new操作符都做了什么？"></a>3，new操作符都做了什么？</h3><p>四大步骤：</p>
-<ul>
-<li>创建一个空对象，并且this变量引用该对象。</li>
-<li>继承了函数的原型。</li>
-<li>属性和方法被加入到this引用的对象中，并且执行了该函数func。</li>
-<li>新创建的对象由this所引用，并且最后隐式的返回this。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function new(func) &#123;</span><br><span class="line">    let target &#x3D; &#123;&#125;;</span><br><span class="line">    target.__proto__ &#x3D; func.prototype;</span><br><span class="line">    let res - func.call(target);</span><br><span class="line">    if (typeof(res) &#x3D;&#x3D; &#39;object&#39; &#125;&#125; typeof(res) &#x3D;&#x3D; &#39;function&#39;) &#123;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    return target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
-<h3 id="4，简单实现call"><a href="#4，简单实现call" class="headerlink" title="4，简单实现call"></a>4，简单实现call</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; es3</span><br><span class="line">Function.prototype.call2 &#x3D; function (context) &#123;</span><br><span class="line">    var context &#x3D; context || window; &#x2F;&#x2F; 因为传进来的context有可能是null</span><br><span class="line">    context.fn &#x3D; this;</span><br><span class="line">    var args &#x3D; [];</span><br><span class="line">    for (var i &#x3D; 1; i &lt; arguments.length; i++) &#123;</span><br><span class="line">        args.push(&quot;arguments[&quot; + i + &quot;]&quot;); &#x2F;&#x2F;不这么做的话 字符串的引号会被自动去掉 变成了变量 导致报错</span><br><span class="line">    &#125;</span><br><span class="line">    args &#x3D; args.join(&quot;,&quot;);</span><br><span class="line">    var result &#x3D; eval(&quot;context.fn(&quot; + args + &quot;)&quot;); &#x2F;&#x2F;相当于执行了context.fn(arguments[1], arguments[2]);</span><br><span class="line">    delete context.fn;</span><br><span class="line">    return result; &#x2F;&#x2F; 因为有可能this函数会有返回值return</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; es6</span><br><span class="line">Function.prototype.call2 &#x3D; function (context) &#123;</span><br><span class="line">    context &#x3D; context ? Object(context) : window;</span><br><span class="line">    context.fn &#x3D; this;</span><br><span class="line">    let args &#x3D; [...arguments].slice(1)</span><br><span class="line">    let result &#x3D; context.fn(...args);</span><br><span class="line">    delete context.fn;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>退出之后用下面的命令在当前目录查看日志的备份backup.tar</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --volumes-from dream-api -v $(pwd):&#x2F;backup alpine tar cvf &#x2F;backup&#x2F;backup.tar &#x2F;var&#x2F;log&#x2F;server</span><br></pre></td></tr></table></figure>
 
-<h3 id="5，简单实现apply"><a href="#5，简单实现apply" class="headerlink" title="5，简单实现apply"></a>5，简单实现apply</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; es3</span><br><span class="line">Function.prototype.apply2 &#x3D; function(context, arr) &#123;</span><br><span class="line">    context &#x3D; context ? Object(context) : window;</span><br><span class="line">    context.fn &#x3D; this;</span><br><span class="line">    var result;</span><br><span class="line">    &#x2F;&#x2F; 判断是否存在第二个参数</span><br><span class="line">    if (!arr) &#123;</span><br><span class="line">        result &#x3D; context.fn();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        var args &#x3D; [];</span><br><span class="line">        for (var i &#x3D; 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">            args.push(&quot;arr[&quot; + i + &quot;]&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        result &#x3D; eval(&quot;context.fn(&quot; + args + &quot;)&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    delete context.fn;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; es6</span><br><span class="line">Function.prototype.apply2 &#x3D; function(context, arr) &#123;</span><br><span class="line">    context &#x3D; context ? Object(context) : window;</span><br><span class="line">    context.fn &#x3D; this;</span><br><span class="line">    let result;</span><br><span class="line">    if (!arr) &#123;</span><br><span class="line">        result &#x3D; context.fn();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        result &#x3D; context.fn(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    delete context.fn;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="数据库备份与恢复"><a href="#数据库备份与恢复" class="headerlink" title="数据库备份与恢复"></a>数据库备份与恢复</h4> <div class="note info"><p>提示</p><p>我们这里使用 MongoDB 自带的备份与恢复命令（mongodump 与 mongorestore ），其他数据库（例如 MySQL）也有类似的命令，都可以借鉴本文的方式。</p></div>
 
-<h3 id="6，简单实现bind"><a href="#6，简单实现bind" class="headerlink" title="6，简单实现bind"></a>6，简单实现bind</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind2 &#x3D; function (context) &#123;</span><br><span class="line">    var _this &#x3D; this;</span><br><span class="line">    var argsParent &#x3D; Array.prototype.slice.call(arguments, 1);</span><br><span class="line">    return function () &#123;</span><br><span class="line">        var args &#x3D; argsParent.contact(Array.prototype.slice.call(arguments));</span><br><span class="line">        _this.apply(context, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="临时容器-容器互联"><a href="#临时容器-容器互联" class="headerlink" title="临时容器 + 容器互联"></a>临时容器 + 容器互联</h5><p>首先，我们的临时容器得连接上 dream-db 容器，并配置好绑定挂载，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v $(pwd):&#x2F;backup --network dream-net mongo sh</span><br></pre></td></tr></table></figure>
+<p>和之前备份日志数据相比，我们要把这个临时容器连接到 dream-net 网络中，它才能访问到 dream-db 的数据进行备份。</p>
+<p>第二步，进入到这个临时容器后，运行 mongodump 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; # mongodump -v --host dream-db:27017 --archive --gzip &gt; &#x2F;backup&#x2F;mongo-backup.gz</span><br></pre></td></tr></table></figure>
+<p>此时，由于绑定挂载，输出到 /backup 的文件将保存到当前目录（pwd）中。退出后，就可以在当前目录下看到 mongo-backup.gz 文件了。</p>
+<h5 id="提前做好绑定挂载"><a href="#提前做好绑定挂载" class="headerlink" title="提前做好绑定挂载"></a>提前做好绑定挂载</h5><p>在创建数据库容器的时候，运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name dream-db --network dream-net -v $(pwd):&#x2F;backup -d mongo</span><br></pre></td></tr></table></figure>
 
-<h3 id="7，https对称加密和非对称加密"><a href="#7，https对称加密和非对称加密" class="headerlink" title="7，https对称加密和非对称加密"></a>7，https对称加密和非对称加密</h3><p>对称加密：发送方和接收方需要持有同一把密钥，发送消息和接收消息均使用该密钥。相对于非加密对称，加密对称具有更高的加解密速度，但双方都需要实现知道密钥，密钥在传输过程中可能会被窃取，因此安全性没有非对称加密高。</p>
-<p>非对称加密；接收方在发送消息前需要事先生成公钥和私钥，然后将公钥发送给发送方，发送方收到公钥后，将待发送数据用公钥加密，发送给接收方。接收方收到数据后，用私钥解密。在这个过程中，公钥负责加密，私钥负责解密，数据在传输过程中即使被截获，攻击者由于没有私钥也无法破解数据。非对称加密算法的加解密速度低于对称加密算法，但是安全性更高。</p>
-<h3 id="8，简单实现promise"><a href="#8，简单实现promise" class="headerlink" title="8，简单实现promise"></a>8，简单实现promise</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 简易版本的promise</span><br><span class="line">&#x2F;&#x2F; 第一步：列出三大块 this.then resolve&#x2F;reject fn(resolve, reject)</span><br><span class="line">&#x2F;&#x2F; 第二步：this.then负责注册所有的函数 resolve&#x2F;reject负责执行所有函数</span><br><span class="line">&#x2F;&#x2F; 第三步：在resolve&#x2F;reject里面要加上setTimeout，防止还没尽兴then注册，就直接执行resolve了</span><br><span class="line">&#x2F;&#x2F; 第四步：resolve&#x2F;reject里面要返回this，这样就可以链式调用了</span><br><span class="line">&#x2F;&#x2F; 第五步：三个状态的管理 pending fulfilled rejected</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;  *****promise的链式调用，在then里面return一个promise这样才能then里面加上异步函数</span><br><span class="line">&#x2F;&#x2F; 加上了catch</span><br><span class="line">function PromiseM(fn) &#123;</span><br><span class="line">    var value &#x3D; null;</span><br><span class="line">    var callbacks &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F; 加入状态，为了解决在Promise异步操作成功之后调用的then注册的回调不会执行的问题</span><br><span class="line">    var state &#x3D; &#39;pending&#39;;</span><br><span class="line">    var _this &#x3D; this;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 注册所有的回调函数</span><br><span class="line">    this.then &#x3D; function (fulfilled, rejected) &#123;</span><br><span class="line">        &#x2F;&#x2F; 如果想链式promise，那就要在这边return一个new Promise</span><br><span class="line">        return new PromiseM(function (resolve, reject) &#123;</span><br><span class="line">            &#x2F;&#x2F; 异常处理</span><br><span class="line">            try &#123;</span><br><span class="line">                if (state &#x3D;&#x3D;&#x3D; &#39;pending&#39;) &#123;</span><br><span class="line">                    callbacks.push(fulfilled);</span><br><span class="line">                    &#x2F;&#x2F; 实现链式调用</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                if (state &#x3D;&#x3D;&#x3D; &#39;fulfilled&#39;) &#123;</span><br><span class="line">                    var data &#x3D; fulfilled(value);</span><br><span class="line">                    &#x2F;&#x2F; 为了能够让两个promise连接起来</span><br><span class="line">                    resolve(data);</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                if (state &#x3D;&#x3D;&#x3D; &#39;rejected&#39;) &#123;</span><br><span class="line">                    var data &#x3D; rejected(data);</span><br><span class="line">                    &#x2F;&#x2F; 为了能让两个promise连接起来</span><br><span class="line">                    resolve(data);</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (e) &#123;</span><br><span class="line">                _this.catch(e)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 执行所有的回调函数</span><br><span class="line">    function resolve(valueNew) &#123;</span><br><span class="line">        value &#x3D; valueNew;</span><br><span class="line">        state &#x3D; &#39;fulfilled&#39;;</span><br><span class="line">        execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 执行所有的回调函数</span><br><span class="line">    function reject(valueNew) &#123;</span><br><span class="line">        value &#x3D; valueNew;</span><br><span class="line">        state &#x3D; &#39;rejected&#39;;</span><br><span class="line">        execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function execute() &#123;</span><br><span class="line">        &#x2F;&#x2F; 加入延时机制，防止promise里面有同步函数导致resolve先执行，then还没注册上函数</span><br><span class="line">        setTimeout(function() &#123;</span><br><span class="line">            callbacks.forEach(function(cb) &#123;</span><br><span class="line">                value &#x3D; cb(value);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.catch &#x3D; function (e) &#123;</span><br><span class="line">        console.log(JSON.stringify(e));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 经典 实现异步回调</span><br><span class="line">    fn(resolve, reject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后再通过 docker exec 执行 mongodump 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec dream-db sh -c &#39;mongodump -v --archive --gzip &gt; &#x2F;backup&#x2F;mongo-backup.gz&#39;</span><br></pre></td></tr></table></figure>
+<p>这样就可以实现创建数据库容器的时候就做好绑定挂载，然后通过 mongodump 把数据备份到挂载区域.这里我们用 sh -c 来执行一整条 Shell 命令（字符串形式），这样避免了重定向符 &gt; 引发的歧义（不理解的话可以把 sh -c ‘xxx’ 替换成 xxx）。可以看到，mongodump 的命令简单了许多，我们再也不需要指定 –host 参数，因为数据库就在本容器内。</p>
+<p><font color="red">但是有个问题：如果已经创建了数据库，并且没有提前做绑定挂载，这种方法就行不通了！</font></p>
+<h2><font color="red">注意，这不是演习！</font></h2>
+
+<p>有了数据库备份文件，我们就可以肆无忌惮地来做一波” 演习 “了。通过以下命令，直接端了目前的数据库和 API 服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f --volumes dream-db</span><br><span class="line">docker rm -f dream-api</span><br></pre></td></tr></table></figure>
+
+<p>没错，通过 –volumes 开关，我们不仅把 dream-db 容器删了，还顺带把挂载的数据卷全部删除！演习就是要足够逼真才行。这时候再访问 localhost:8080 ，之前的待办数据全部丢失！</p>
+<p>现在让我们再次创建新的 dream-db 容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name dream-db --network dream-net -v $(pwd):&#x2F;backup -d mongo</span><br></pre></td></tr></table></figure>
+
+<p>注意到，我们通过绑定挂载的方式把当前目录映射到容器的 /backup 目录，这意味着可以在这个新的容器中通过 /backup/mongo-backup.gz 来恢复数据，运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec dream-db sh -c &#39;mongorestore --archive --gzip &lt; &#x2F;backup&#x2F;mongo-backup.gz&#39;</span><br></pre></td></tr></table></figure>
+
+<p>我们应该会看到输出了一些日志，提示我们数据恢复成功。最后重新开启 API 服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 4000:4000 --name dream-api --network dream-net -d dream-server</span><br></pre></td></tr></table></figure>
+
+<p>现在再次访问应用是不是发现数据都找回来了！</p>
+<p>今天的docker上手到这里就结束了，共勉加油！</p>
+<p>教程：<a href="https://tuture.co/2020/03/06/0X8ssR3/" target="_blank" rel="noopener">图灵社区：上手容器数据管理</a></p>
+
       
     </div>
     
@@ -501,7 +618,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i>面试题</a>
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i>Docker</a>
           
         </div>
       
@@ -514,8 +631,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/28/JS%E8%AE%A1%E7%AE%97%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" rel="next" title="JS计算精度丢失问题">
-                <i class="fa fa-chevron-left"></i> JS计算精度丢失问题
+              <a href="/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/" rel="next" title="Docker简单上手02">
+                <i class="fa fa-chevron-left"></i> Docker简单上手02
               </a>
             
           </div>
@@ -524,8 +641,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/05/Javascript%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" rel="prev" title="Javascript数组去重">
-                Javascript数组去重 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/10/09/Hexo%E5%86%99%E4%BD%9C%E6%A0%B7%E5%BC%8F%E7%AE%80%E4%BB%8B/" rel="prev" title="Hexo写作样式简介">
+                Hexo写作样式简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -694,7 +811,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1，http的状态码中，499是什么？如何出现499？如何排查解决？"><span class="nav-number">1.</span> <span class="nav-text">1，http的状态码中，499是什么？如何出现499？如何排查解决？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2，如何遍历一个dom树"><span class="nav-number">2.</span> <span class="nav-text">2，如何遍历一个dom树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，new操作符都做了什么？"><span class="nav-number">3.</span> <span class="nav-text">3，new操作符都做了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4，简单实现call"><span class="nav-number">4.</span> <span class="nav-text">4，简单实现call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5，简单实现apply"><span class="nav-number">5.</span> <span class="nav-text">5，简单实现apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6，简单实现bind"><span class="nav-number">6.</span> <span class="nav-text">6，简单实现bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7，https对称加密和非对称加密"><span class="nav-number">7.</span> <span class="nav-text">7，https对称加密和非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8，简单实现promise"><span class="nav-number">8.</span> <span class="nav-text">8，简单实现promise</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker数据管理"><span class="nav-number">2.</span> <span class="nav-text">Docker数据管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据卷"><span class="nav-number">2.1.</span> <span class="nav-text">数据卷</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本命令"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建数据卷的方式"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建数据卷的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建命名卷"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">创建命名卷</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建匿名卷"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">创建匿名卷</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在-Dockerfile-中使用数据卷"><span class="nav-number">2.1.3.</span> <span class="nav-text">在 Dockerfile 中使用数据卷</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定挂载"><span class="nav-number">2.2.</span> <span class="nav-text">绑定挂载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动手实战"><span class="nav-number">3.</span> <span class="nav-text">动手实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目准备"><span class="nav-number">3.1.</span> <span class="nav-text">项目准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为-Express-服务器挂载数据卷"><span class="nav-number">3.2.</span> <span class="nav-text">为 Express 服务器挂载数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志数据的备份"><span class="nav-number">3.3.</span> <span class="nav-text">日志数据的备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库备份与恢复"><span class="nav-number">3.4.</span> <span class="nav-text">数据库备份与恢复</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#临时容器-容器互联"><span class="nav-number">3.4.1.</span> <span class="nav-text">临时容器 + 容器互联</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提前做好绑定挂载"><span class="nav-number">3.4.2.</span> <span class="nav-text">提前做好绑定挂载</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text">注意，这不是演习！</span></a></div>
             
 
           </div>
