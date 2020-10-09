@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Docker," />
 
 
 
@@ -88,17 +88,23 @@
 
 
 
-<meta name="description" content="函数表达式是JS中一种既强大又容易令人困惑的特性。定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。函数声明的语法是这样的： 123function functionName(arg0, arg1, arg2) &amp;#123;    &#x2F;&#x2F; 函数体&amp;#125; 函数声明的一个重要特征就是函数声明提升，意思是在执行代码之前会先读取函数声明。这就意味着可以把函数声明放在调用它">
+<meta name="description" content="前言在Docker简单上手01中我们熟悉了常用的docker命令，并成功地容器化了第一个应用。这篇文章我们将实现后端API服务器+数据库的容器化。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript-11-函数表达式-1">
-<meta property="og:url" content="https://github.com/liubrook/liubrook.github.io/2019/10/14/Javascript-11-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-1/index.html">
+<meta property="og:title" content="Docker简单上手02">
+<meta property="og:url" content="https://github.com/liubrook/liubrook.github.io/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/index.html">
 <meta property="og:site_name" content="前端笔记">
-<meta property="og:description" content="函数表达式是JS中一种既强大又容易令人困惑的特性。定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。函数声明的语法是这样的： 123function functionName(arg0, arg1, arg2) &amp;#123;    &#x2F;&#x2F; 函数体&amp;#125; 函数声明的一个重要特征就是函数声明提升，意思是在执行代码之前会先读取函数声明。这就意味着可以把函数声明放在调用它">
-<meta property="article:published_time" content="2019-10-14T09:33:49.000Z">
-<meta property="article:modified_time" content="2020-09-15T09:34:18.365Z">
+<meta property="og:description" content="前言在Docker简单上手01中我们熟悉了常用的docker命令，并成功地容器化了第一个应用。这篇文章我们将实现后端API服务器+数据库的容器化。">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-2-1.png">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-2-2.png">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-2-3.png">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-2-4.png">
+<meta property="og:image" content="https://img.brookliu.xyz/blog/docker-2-5.png">
+<meta property="article:published_time" content="2020-10-08T02:48:11.000Z">
+<meta property="article:modified_time" content="2020-10-09T02:54:10.353Z">
 <meta property="article:author" content="Brookliu">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.brookliu.xyz/blog/docker-2-1.png">
 
 
 
@@ -128,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/liubrook/liubrook.github.io/2019/10/14/Javascript-11-函数表达式-1/"/>
+  <link rel="canonical" href="https://github.com/liubrook/liubrook.github.io/2020/10/08/Docker简单上手02/"/>
 
 
 
 
 
-  <title>Javascript-11-函数表达式-1 | 前端笔记</title>
+  <title>Docker简单上手02 | 前端笔记</title>
   
 
 
@@ -305,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/liubrook/liubrook.github.io/2019/10/14/Javascript-11-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-1/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/liubrook/liubrook.github.io/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Brookliu">
@@ -322,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript-11-函数表达式-1</h1>
+          <h1 class="post-title" itemprop="name headline">Docker简单上手02</h1>
         
 
         <div class="post-meta">
@@ -334,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T17:33:49+08:00">
-                2019-10-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-08T10:48:11+08:00">
+                2020-10-08
               </time>
             
 
@@ -357,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
                   </a>
                 </span>
 
@@ -375,8 +381,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/14/Javascript-11-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/14/Javascript-11-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-1/" itemprop="commentCount"></span>
+                <a href="/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -384,7 +390,7 @@
 
           
           
-             <span id="/2019/10/14/Javascript-11-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-1/" class="leancloud_visitors" data-flag-title="Javascript-11-函数表达式-1">
+             <span id="/2020/10/08/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B02/" class="leancloud_visitors" data-flag-title="Docker简单上手02">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -414,7 +420,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  3.2k
                 </span>
               
 
@@ -430,7 +436,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  13
                 </span>
               
             </div>
@@ -451,44 +457,123 @@
       
 
       
-        <p>函数表达式是JS中一种既强大又容易令人困惑的特性。定义函数的方式有两种：一种是函数声明，另一种就是函数表达式。函数声明的语法是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function functionName(arg0, arg1, arg2) &#123;</span><br><span class="line">    &#x2F;&#x2F; 函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数声明的一个重要特征就是函数声明提升，意思是在执行代码之前会先读取函数声明。这就意味着可以把函数声明放在调用它的语句后面。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sayHi();</span><br><span class="line">function sayHi() &#123;</span><br><span class="line">    alert(&#39;Hi!&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>函数表达式有几种不同的语法形式。最常见的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var functionName &#x3D; function(arg0, arg1, arg2) &#123;</span><br><span class="line">    &#x2F;&#x2F; 函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种形式看起来好像是常规的变量赋值语句，即创建一个函数并将它赋值给变量functionName。这种情况下创建的函数叫做匿名函数，因为function关键字后面没有标识符(匿名函数有时也叫拉姆达函数)。匿名函数的name属性是字符串。</p>
-<p>函数表达式与其他表达式一样，在使用前必须先赋值。</p>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归函数是在一个函数通过名字调用自身的情况下构成的，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function factorial(num) &#123;</span><br><span class="line">    if (num &lt;&#x3D; 1) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return num * factorial(num - 1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var anotherFactorial &#x3D; factorial;</span><br><span class="line">factorial &#x3D; null;</span><br><span class="line">alert(anotherFactorial(4)); &#x2F;&#x2F; 出错</span><br></pre></td></tr></table></figure>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在<a href="https://brookliu.xyz/2020/10/07/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B01/#more" target="_blank" rel="noopener">Docker简单上手01</a>中我们熟悉了常用的docker命令，并成功地容器化了第一个应用。这篇文章我们将实现后端API服务器+数据库的容器化。</p>
+<a id="more"></a> 
+<h3 id="熟悉流程"><a href="#熟悉流程" class="headerlink" title="熟悉流程"></a>熟悉流程</h3><p>下面我们就开始今天的内容学习：</p>
+<h4 id="项目准备"><a href="#项目准备" class="headerlink" title="项目准备"></a>项目准备</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 如果你看了上一篇教程，仓库已经克隆下来了</span><br><span class="line">cd docker-dream</span><br><span class="line">git fetch origin network-start</span><br><span class="line">git checkout network-start</span><br><span class="line"></span><br><span class="line"># 如果你打算直接从这篇教程开始</span><br><span class="line">git clone -b network-start https:&#x2F;&#x2F;github.com&#x2F;tuture-dev&#x2F;docker-dream.git</span><br><span class="line">cd docker-dream</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>提示</p>我直接用的上一篇文章中下载的项目但是在后面容器化的时候一直无法成功，后来发现是上一篇下载的项目和这一篇的不一样，建议直接重新克隆下载项目。</div>
 
-<p>在这种情况下，使用arguments.callee可以解决这个问题。arguments.callee是一个指向正在执行的函数的指针，因此可以用它来实现对函数的递归调用，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function factorial(num) &#123;</span><br><span class="line">    if (num &lt;&#x3D; 1) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return num *  arguments.callee(num - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和之前容器化前端静态页面服务器相比，多了一个难点：服务器和数据库分别是两个独立的容器，但是服务器需要连接和访问数据库，怎么实现跨容器之间的通信？</p>
+<h4 id="Network-类型"><a href="#Network-类型" class="headerlink" title="Network 类型"></a>Network 类型</h4><p>Network，顾名思义就是 “网络”，能够让不同的容器之间相互通信。首先有必要要列举一下 Docker Network 的五种驱动模式（driver）：</p>
+<ul>
+<li>bridge：默认的驱动模式，即 “网桥”，通常用于单机（更准确地说，是单个 Docker 守护进程）。</li>
+<li>overlay：Overlay 网络能够连接多个 Docker 守护进程，通常用于集群，后续讲 Docker Swarm 的文章会重点讲解。</li>
+<li>host：直接使用主机（也就是运行 Docker 的机器）网络，仅适用于 Docker 17.06+ 的集群服务。</li>
+<li>macvlan：Macvlan 网络通过为每个容器分配一个 MAC 地址，使其能够被显示为一台物理设备，适用于希望直连到物理网络的应用程序（例如嵌入式系统、物联网等等）。</li>
+<li>none：禁用此容器的所有网络。</li>
+</ul>
+<p>我们今天将围绕着默认的Bridge网络驱动展开。</p>
+<h4 id="网络准备"><a href="#网络准备" class="headerlink" title="网络准备"></a>网络准备</h4><p>只是这么介绍的话我们还是无法理解，所以我们需要动手试一下来理解和感受Bridge Network。我们来用<a href="https://www.alpinelinux.org/" target="_blank" rel="noopener">Alpine Linux</a>镜像体验下。</p>
+<p>网桥网络分为两类：</p>
+<ul>
+<li>默认网络(Docker运行时自带，不推荐用于生产环境)。</li>
+<li>自定义网络(推荐使用)。</li>
+</ul>
+<h4 id="默认网络"><a href="#默认网络" class="headerlink" title="默认网络"></a>默认网络</h4><p>我们会在默认的 bridge 网络上连接两个容器 alpine1 和 alpine2。 运行以下命令，查看当前已有的网络：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
+<p>应该会看到以下输出（注意你机器上的 ID 很有可能不一样）：<br><img src="https://img.brookliu.xyz/blog/docker-2-1.png" alt="网络输出图"></p>
+<p>这三个默认网络分别对应上面的 bridge、host 和 none 网络类型。接下来我们将创建两个容器，分别名为 alpine1 和 alpine2，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit --name alpine1 alpine</span><br><span class="line">docker run -dit --name alpine2 alpine</span><br></pre></td></tr></table></figure>
 
-<p>因此，在编写递归函数时，使用arguments.callee总比使用函数名更保险。</p>
-<p>但在严格模式下，不能通过脚本访问arguments.callee，访问这个属性会导致错误。不过，可以使用命名函数表达式来达成相同的结果。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var factorial &#x3D; (functon f(num) &#123;</span><br><span class="line">    if (num &lt;&#x3D; 1) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return num * f(num - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>-dit 是 -d（后台模式）、-i（交互模式）和 -t（虚拟终端）三个选项的合并。通过这个组合，我们可以让容器保持在后台运行而不会退出（没错，相当于是在 “空转”）。</p>
+<p>用 <code>docker ps</code>命令确定以上两个容器均在后台运行：<br><img src="https://img.brookliu.xyz/blog/docker-2-2.png" alt="网络输出图2"></p>
+<p>通过以下命令查看默认的 bridge 网络的详情：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network inspect bridge</span><br></pre></td></tr></table></figure>
+<p>应该会输出 JSON 格式的网络详细数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Name&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;Id&quot;: &quot;4741cab870f168d59a3b5eb1d67251d177dd3af14b8cccc39c130a3f0ec5e3a0&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2020-10-07T11:18:54.983568882+08:00&quot;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;EnableIPv6&quot;: false,</span><br><span class="line">        &quot;IPAM&quot;: &#123;</span><br><span class="line">            &quot;Driver&quot;: &quot;default&quot;,</span><br><span class="line">            &quot;Options&quot;: null,</span><br><span class="line">            &quot;Config&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;Subnet&quot;: &quot;172.17.0.0&#x2F;16&quot;,</span><br><span class="line">                    &quot;Gateway&quot;: &quot;172.17.0.1&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Internal&quot;: false,</span><br><span class="line">        &quot;Attachable&quot;: false,</span><br><span class="line">        &quot;Ingress&quot;: false,</span><br><span class="line">        &quot;ConfigFrom&quot;: &#123;</span><br><span class="line">            &quot;Network&quot;: &quot;&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;ConfigOnly&quot;: false,</span><br><span class="line">        &quot;Containers&quot;: &#123;</span><br><span class="line">            &quot;1af67ce67ec14f57199a6b4e9183330e017014ad33cad0f783b4a3ab9e763bd0&quot;: &#123;</span><br><span class="line">                &quot;Name&quot;: &quot;client&quot;,</span><br><span class="line">                &quot;EndpointID&quot;: &quot;1b800afa81ba8e7d15c806c349166c5f24619d71710825860f4d4eef706badf8&quot;,</span><br><span class="line">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span><br><span class="line">                &quot;IPv4Address&quot;: &quot;172.17.0.2&#x2F;16&quot;,</span><br><span class="line">                &quot;IPv6Address&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;27783577c5b621ff8d2dfdc2982bad4635ac093ed261aa4f4189788f8efe0807&quot;: &#123;</span><br><span class="line">                &quot;Name&quot;: &quot;alpine2&quot;,</span><br><span class="line">                &quot;EndpointID&quot;: &quot;8539c75c6cc44dceb143aac1936e215e2f80f6b6a412c6f10b33722c4f9cf74b&quot;,</span><br><span class="line">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:04&quot;,</span><br><span class="line">                &quot;IPv4Address&quot;: &quot;172.17.0.4&#x2F;16&quot;,</span><br><span class="line">                &quot;IPv6Address&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;e7a69f15fa39cdd2434dac9ec9e84f7d7b133f062dfe110cfcde297546830043&quot;: &#123;</span><br><span class="line">                &quot;Name&quot;: &quot;alpine1&quot;,</span><br><span class="line">                &quot;EndpointID&quot;: &quot;0c0310de6ec103386a9485166b54826efa574aa6b3da7996c16385f1d0bb16c5&quot;,</span><br><span class="line">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:03&quot;,</span><br><span class="line">                &quot;IPv4Address&quot;: &quot;172.17.0.3&#x2F;16&quot;,</span><br><span class="line">                &quot;IPv6Address&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Options&quot;: &#123;</span><br><span class="line">            &quot;com.docker.network.bridge.default_bridge&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.enable_icc&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.enable_ip_masquerade&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.host_binding_ipv4&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.name&quot;: &quot;docker0&quot;,</span><br><span class="line">            &quot;com.docker.network.driver.mtu&quot;: &quot;1500&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>在这一大串信息里我们重点要关注的是两个字段：</p>
+<ul>
+<li>IPAM：IP 地址管理信息（IP Address Management），可以看到网关地址为 172.17.0.1（由于篇幅有限，想要了解网关的同学可自行查阅计算机网络以及 TCP/IP 协议方面的资料）。</li>
+<li>Containers：包括此网络上连接的所有容器，可以看到我们刚刚创建的 alpine1 和 alpine2，它们的 IP 地址分别为 172.17.0.3 和 172.17.0.4（后面的 /16 是子网掩码，暂时不用考虑）。</li>
+</ul>
+<p>进入 alpine1 容器中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach alpine1</span><br></pre></td></tr></table></figure>
 
-<p>这种方式在严格模式和非严格模式喜爱都行得通。</p>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包是指有权访问另一个函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function createComparisonFunction(propertyName) &#123;</span><br><span class="line">    return function(object1, object2) &#123;</span><br><span class="line">        var value1 &#x3D; object1[propertyName];</span><br><span class="line">        var value2 &#x3D; object2[propertyName];</span><br><span class="line"></span><br><span class="line">        if (value1 &lt; value2) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125; else if(value1 &gt; value2) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote><p>attach 命令只能进入设置了交互式运行的容器（也就是在启动时加了 -i 参数）。</p>
+</blockquote>
 
-<p>当某个函数被调用时，会创建一个执行环境及相应的作用域链。然后，使用arguments和其他命名参数的值来初始化函数的活动对象。但在作用域链中，外部函数的活动对象始终处于第二位，外部函数的外部函数的活动对象处于第三位，…直至作为作用域链终点的全局执行环境。</p>
-<p>作用域链本质上是一个指向变量对象的指针列表，它只引用但不实际包含变量对象。</p>
-<p>在另一个函数内部定义的函数会将包含函数(即外部函数)的活动对象添加到它的作用域中。</p>
-<h4 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h4><p>闭包只能取得包含函数中任何变量的最后一个值。闭包所保存的是整个变量对象，而不是某个特殊的变量。如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function createFunctions() &#123;</span><br><span class="line">    var result &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">    for(var i &#x3D; 0; i &lt; 10; i++) &#123;</span><br><span class="line">        result[i] &#x3D; function() &#123;</span><br><span class="line">            return i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 实际上每个函数都返回10，我们可以通过创建另一个匿名函数强制让闭包的行为符合预期</span><br><span class="line"></span><br><span class="line">function createFunctions1()&#123;</span><br><span class="line">    var result &#x3D; new Array();</span><br><span class="line"></span><br><span class="line">    for(var i &#x3D; 0; i &lt; 10; i++)&#123;</span><br><span class="line">        result[i] &#x3D; function(num) &#123;</span><br><span class="line">            return function() &#123;</span><br><span class="line">                return num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(i)</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你看到前面的命令提示符变成 / #，说明我们已经身处容器之中了。我们通过 ping 命令测试一下网络连接情况，首先 ping 一下百度 baidu.com（-c 参数代表发送数据包的数量，这里我们设为 5）：<br><img src="https://img.brookliu.xyz/blog/docker-2-3.png" alt="ping百度"></p>
+<p>看上图，全部都连上了没有丢包(这个取决于你的网络环境)。由此可见，容器内可以访问主机所连接的全部网络（包括 localhost）。</p>
+<p>接下来测试能否连接到 alpine2，在刚才 docker network inspect 命令的输出中找到 alpine2 的 IP 为 172.17.0.3，尝试能否 ping 通：<br><img src="https://img.brookliu.xyz/blog/docker-2-4.png" alt="ping2"><br>完美！我们能够从 alpine1 中访问 alpine2 容器。作为练习，你可以自己尝试一下能否从 alpine2 容器中 ping 通 alpine1 哦。</p>
+<blockquote><p>如果你不想让 alpine1 停下来，记得通过 Ctrl + P + Ctrl + Q（按住 Ctrl，然后依次按 P 和 Q 键）“脱离”（detach，也就是刚才 attach 命令的反义词）容器，而不是按 Ctrl + D 哦。</p>
+</blockquote>
 
-<h4 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于this对象</h4><p>this对象是在运行时基于函数的执行环境绑定的；在全局函数中，this等于window，而当函数被作为某个对象的方法调用时，this等于那个对象。不过，匿名函数的执行环境具有全局性，因此其this通常指向window。当然在通过call()和apply()改变函数执行环境的情况下，this就会指向其他对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &#39;The Window&#39;;</span><br><span class="line"></span><br><span class="line">var object &#x3D; &#123;</span><br><span class="line">    name: &#39;My Object&#39;,</span><br><span class="line"></span><br><span class="line">    getNameFunc: function() &#123;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            return this.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(object.getNameFunc()()); &#x2F;&#x2F; &#39;The Window&#39;(在非严格模式下)</span><br></pre></td></tr></table></figure>
+<h4 id="自定义网络"><a href="#自定义网络" class="headerlink" title="自定义网络"></a>自定义网络</h4><p>默认的 bridge 网络存在一个很大的问题：只能通过 IP 地址相互访问。这毫无疑问是非常麻烦的，当容器数量很多的时候难以管理，而且每次的 IP 都可能发生变化。</p>
+<p>而自定义网络则很好地解决了这一问题。在同一个自定义网络中，每个容器能够通过彼此的名称相互通信，因为 Docker 为我们搞定了 DNS 解析工作，这种机制被称为服务发现（Service Discovery）。具体而言，我们将创建一个自定义网络 my-net，并创建 alpine3 和 alpine4 两个容器，连上 my-net。<br>首先创建自定义网络 my-net：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker network create my-net</span><br><span class="line"># 由于默认网络驱动为 bridge，因此相当于以下命令</span><br><span class="line"># docker network create --driver bridge my-net</span><br></pre></td></tr></table></figure>
+<p>查看当前所有的网络：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
+<p>可以看到刚刚创建的 my-net：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NETWORK ID          NAME                DRIVER              SCOPE</span><br><span class="line">4741cab870f1        bridge              bridge              local</span><br><span class="line">a5ccbe18d2ab        host                host                local</span><br><span class="line">5d8856725e7f        my-net              bridge              local</span><br><span class="line">a18954d078b5        none                null                local</span><br></pre></td></tr></table></figure>
+<p>创建两个新的容器 alpine3 和 alpine4：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -dit --name alpine3 --network my-net alpine</span><br><span class="line">docker run -dit --name alpine4 --network my-net alpine</span><br></pre></td></tr></table></figure>
+<p>通过 –network 参数指定容器想要连接的网络（也就是刚才创建的 my-net）。</p>
+<blockquote><p>如果在一开始创建并运行容器时忘记指定网络，那么下次再想指定网络时，可以通过 docker network connect 命令再次连上（第一个参数是网络名称 my-net，第二个是需要连接的容器 alpine3）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network connect my-net alpine3</span><br></pre></td></tr></table></figure></blockquote>
 
-<p>前面提到过，每个函数在被调用时都会自动取得两个特殊变量：this和arguments。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数中的这两个变量。不过，把外部作用域中的this对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了。如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &#39;The Window&#39;;</span><br><span class="line"></span><br><span class="line">var object &#x3D; &#123;</span><br><span class="line">    name: &#39;My Object&#39;,</span><br><span class="line"></span><br><span class="line">    getNameFunc: function() &#123;</span><br><span class="line">        var that &#x3D; this;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            return that.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(object.getNameFunc()()); &#x2F;&#x2F; &#39;My Object&#39;</span><br></pre></td></tr></table></figure>
+<p>进入到 alpine3 中，测试能否 ping 通 alpine4：<br><img src="https://img.brookliu.xyz/blog/docker-2-5.png" alt="ping"></p>
+<p>可以看到 alpine4 被自动解析成了 172.18.0.3。我们可以通过 docker network inspect 来验证一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network inspect --format &#39;&#123;&#123;range .Containers&#125;&#125;&#123;&#123;.Name&#125;&#125;: &#123;&#123;.IPv4Address&#125;&#125; &#123;&#123;end&#125;&#125;&#39; my-net</span><br></pre></td></tr></table></figure>
 
-<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function assignhandler() &#123;</span><br><span class="line">    var element &#x3D; document.getElementById(&#39;someElement&#39;);</span><br><span class="line">    elment.onclick &#x3D; function() &#123;</span><br><span class="line">        alert(element.id)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>循环引用导致element所占用的内存永远不会被回收。</p>
-<p>闭包会引用包含函数的整个活动对象，而其中包含着element。即使闭包不直接引用element，包含函数的活动对象中也仍然会保存一个引用。因此，有必要把element变量设置为null。这样就能够解除对DOM对象的引用，顺利地减少其引用数，确保正常回收其占用的内存。</p>
+<h4 id="收尾工作"><a href="#收尾工作" class="headerlink" title="收尾工作"></a>收尾工作</h4><p>通过上面的例子我们明白了默认和自定义网络的一个大致流程，现在可以结束之前创建的容器的使命了:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f alpine1 alpine2 alpine3 alpine4</span><br></pre></td></tr></table></figure>
+
+<p>把创建的 my-net 也删除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network rm my-net</span><br></pre></td></tr></table></figure>
+
+<h3 id="动手实践"><a href="#动手实践" class="headerlink" title="动手实践"></a>动手实践</h3><p>下面我们来正式的进行今天的主题内容:</p>
+<h4 id="容器化服务器"><a href="#容器化服务器" class="headerlink" title="容器化服务器"></a>容器化服务器</h4><p>我们首先对后端服务器也进行容器化。创建 server/Dockerfile，代码如下：<br><font color="blue">注意是在docker-dream目录下哦</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">FROM node:10</span><br><span class="line"></span><br><span class="line"># 指定工作目录为 &#x2F;usr&#x2F;src&#x2F;app，接下来的命令全部在这个目录下操作</span><br><span class="line">WORKDIR &#x2F;usr&#x2F;src&#x2F;app</span><br><span class="line"></span><br><span class="line"># 将 package.json 拷贝到工作目录</span><br><span class="line">COPY package.json .</span><br><span class="line"></span><br><span class="line"># 安装 npm 依赖</span><br><span class="line">RUN npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org &amp;&amp; npm install</span><br><span class="line"></span><br><span class="line"># 拷贝源代码</span><br><span class="line">COPY . .</span><br><span class="line"></span><br><span class="line"># 设置环境变量（服务器的主机 IP 和端口）</span><br><span class="line">ENV MONGO_URI&#x3D;mongodb:&#x2F;&#x2F;dream-db:27017&#x2F;todos</span><br><span class="line">ENV HOST&#x3D;0.0.0.0</span><br><span class="line">ENV PORT&#x3D;4000</span><br><span class="line"></span><br><span class="line"># 开放 4000 端口</span><br><span class="line">EXPOSE 4000</span><br><span class="line"></span><br><span class="line"># 设置镜像运行命令</span><br><span class="line">CMD [ &quot;node&quot;, &quot;index.js&quot; ]</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的代码我们可以发现这次的Dockerfile比[上一篇教程]中的要复杂不少。每一行的含义已经注释在代码中了，我们看下多了哪些新东西：</p>
+<ul>
+<li>RUN 指令用于在容器中运行任何命令，这里我们通过 npm install 安装所有项目依赖（当然之前配置了一下 npm 镜像，可以安装得快一点）。</li>
+<li>ENV 指令用于向容器中注入环境变量，这里我们设置了 数据库的连接字符串 MONGO_URI（注意这里给数据库取名为 <strong>dream-db</strong>，后面就会创建这个容器），还配置了服务器的 HOST 和 PORT。</li>
+<li>EXPOSE 指令用于开放端口 4000。之前在用 Nginx 容器化前端项目时没有指定，是因为 Nginx 基础镜像已经开放了 8080 端口，无需我们设置；而这里用的 Node 基础镜像则没有开放，需要我们自己去配置。</li>
+<li>CMD 指令用于指定此容器的启动命令（也就是 docker ps 查看时的 COMMAND 一列），对于服务器来说当然就是保持运行状态。</li>
+</ul>
+<div class="note warning"><p>注意</p>初次尝试容器的朋友很容易犯的一个错误就是忘记将服务器的 host 从 localhost（127.0.0.1）改成 0.0.0.0，导致服务器无法在容器之外被访问到。</div>
+
+<p>与之前前端容器化类似，创建 server/.dockerignore 文件，忽略服务器日志 access.log 和 node_modules，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">access.log</span><br></pre></td></tr></table></figure>
+
+<p>然后项目根目录下运行以下命令，构建服务器镜像，指定名称为 dream-server：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t dream-server server</span><br></pre></td></tr></table></figure>
+<p>然后就会自动开始下载构建，这个时候我们需要等一会儿。</p>
+<h4 id="连接服务器与数据库"><a href="#连接服务器与数据库" class="headerlink" title="连接服务器与数据库"></a>连接服务器与数据库</h4><p>首先创建一个自定义网络dream-net</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create dream-net</span><br></pre></td></tr></table></figure>
+
+<p>然后使用官方的mongo镜像创建并运行MongoDB容器。命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name dream-db --network dream-net -d mongo</span><br></pre></td></tr></table></figure>
+<p>我们指定容器名称为 dream-db，所连接的网络为 dream-net，并且在后台模式下运行（-d）。</p>
+<div class="note info"><p>提示</p>在同一自定义网络中的所有容器会互相暴露所有端口，不同的应用之间可以更轻松地相互通信；同时，除非通过 -p（--publish）手动开放端口，网络之外无法访问网络中容器的其他端口，实现了良好的隔离性。网络之内的互操作性和网络内外的隔离性也是 Docker Network 的一大优势所在。</div>
+
+<div class="note danger"><p>危险</p>这里我们在开启 MongoDB 数据库容器时没有设置任何鉴权措施（例如设置用户名和密码），所有连接数据库的请求都可以任意修改数据，在生产环境是极其危险的。后续文章中我们会讲解如何在容器中管理机密信息（例如密码）。</div>
+
+<p>然后运行服务器容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 4000:4000 --name dream-api --network dream-net -d dream-server</span><br></pre></td></tr></table></figure>
+
+<p>查看服务器容器的日志输出，确定 MongoDB 连接成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs dream-api</span><br></pre></td></tr></table></figure>
+<p>看到输出下面的信息就代表成功了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server is running on http:&#x2F;&#x2F;0.0.0.0:4000</span><br><span class="line">Mongoose connected.</span><br></pre></td></tr></table></figure>
+<h4 id="容器化前端页面"><a href="#容器化前端页面" class="headerlink" title="容器化前端页面"></a>容器化前端页面</h4><p>在项目根目录下，通过以下命令进行容器化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t dream-client client</span><br></pre></td></tr></table></figure>
+
+<p>然后运行容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 8080:80 --name client -d dream-client</span><br></pre></td></tr></table></figure>
+<p>可以通过 <code>docker ps</code> 命令检验三个容器是否全部正确开启：</p>
+<p>最后，访问 localhost:8080(服务器域名:8080)就可以看到，我们在最后刷新了几次页面，数据记录也都还在，说明我们带有数据库的全栈应用跑起来了！</p>
 
       
     </div>
@@ -514,7 +599,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i>JavaScript</a>
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i>Docker</a>
           
         </div>
       
@@ -527,8 +612,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/07/hexo-next-%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="next" title="hexo next 日常问题解决方案">
-                <i class="fa fa-chevron-left"></i> hexo next 日常问题解决方案
+              <a href="/2020/10/07/Docker%E7%AE%80%E5%8D%95%E4%B8%8A%E6%89%8B01/" rel="next" title="Docker简单上手01">
+                <i class="fa fa-chevron-left"></i> Docker简单上手01
               </a>
             
           </div>
@@ -536,10 +621,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/16/Javascript-11-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F-2/" rel="prev" title="Javascript-11-函数表达式-2">
-                Javascript-11-函数表达式-2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -707,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">2.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包与变量"><span class="nav-number">2.1.</span> <span class="nav-text">闭包与变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于this对象"><span class="nav-number">2.2.</span> <span class="nav-text">关于this对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存泄漏"><span class="nav-number">2.3.</span> <span class="nav-text">内存泄漏</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#熟悉流程"><span class="nav-number">2.</span> <span class="nav-text">熟悉流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目准备"><span class="nav-number">2.1.</span> <span class="nav-text">项目准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-类型"><span class="nav-number">2.2.</span> <span class="nav-text">Network 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络准备"><span class="nav-number">2.3.</span> <span class="nav-text">网络准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认网络"><span class="nav-number">2.4.</span> <span class="nav-text">默认网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义网络"><span class="nav-number">2.5.</span> <span class="nav-text">自定义网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收尾工作"><span class="nav-number">2.6.</span> <span class="nav-text">收尾工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动手实践"><span class="nav-number">3.</span> <span class="nav-text">动手实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#容器化服务器"><span class="nav-number">3.1.</span> <span class="nav-text">容器化服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接服务器与数据库"><span class="nav-number">3.2.</span> <span class="nav-text">连接服务器与数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器化前端页面"><span class="nav-number">3.3.</span> <span class="nav-text">容器化前端页面</span></a></li></ol></li></ol></div>
             
 
           </div>
